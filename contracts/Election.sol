@@ -8,6 +8,7 @@ contract Election {
         uint voteCount;
     }
     Candidate[] public candidates;
+    uint16 public candidatesCount;
     
     mapping(address => bool) public voters;
 
@@ -22,8 +23,8 @@ contract Election {
         }
         
         // Add candidates
-        uint _candidatesLength = _candidates.length;
-        for (i = 0; i < _candidatesLength; i++) {
+        candidatesCount = _candidates.length;
+        for (i = 0; i < candidatesCount; i++) {
             candidates.push(Candidate(i, _candidates[i], 0));
         }        
         
