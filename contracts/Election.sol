@@ -1,4 +1,5 @@
 pragma solidity ^0.4.24;
+pragma experimental ABIEncoderV2;
 
 contract Election {
     struct Candidate {
@@ -19,7 +20,7 @@ contract Election {
         
         // Add candidates
         uint _candidatesLength = _candidates.length;
-        for (uint i = 0; i < _candidatesLength; i++) {
+        for (i = 0; i < _candidatesLength; i++) {
             candidates.push(Candidate(i, _candidates[i], 0));
         }        
         
