@@ -10,6 +10,9 @@ contract Election {
     Candidate[] public candidates;
     
     mapping(address => bool) public voters;
+
+    uint256 public startTime;
+    uint256 public deadline;
     
     constructor (address[] _voters, string[] _candidates, uint256 _deadline, uint256 _startTime) public {
         // Add voters
@@ -24,8 +27,33 @@ contract Election {
             candidates.push(Candidate(i, _candidates[i], 0));
         }        
         
-        // Define startTime and deadline
-        //uint256 startTime = _starttime;
-        //uint256 deadline = _deadline;
+        // Define startTime and deadline, in seconds since the epoch
+        startTime = _startTime;
+        deadline = _deadline;
     }
-}    
+
+    function vote (uint _candidateId) public {
+        require(
+            voters[msg.sender],
+            "Sender has no right to vote or has already voted"
+        );
+
+        require(
+            _candidateId >= 0 && _candidateId < candidates.length,
+            "Invalid candidate id"
+        );
+
+        require(
+            startTime < now,
+            "Election has not started yet"
+        );
+
+        require(
+            deadline > now,
+            "Election has finished"
+        );
+
+        voters[msg.sender] = false;
+        candidates[_candidateId].voteCount ++;
+    }
+}
