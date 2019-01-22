@@ -1,4 +1,4 @@
-pragma solidity >=0.4.24 <0.6.0;
+pragma solidity ^0.4.24;
 
 contract Election {
     struct Candidate {
@@ -24,7 +24,7 @@ contract Election {
         }        
         
         // Define startTime and deadline
-        uint256 startTime = _starttime;
-        uint256 deadline = _deadline;
+        //uint256 startTime = _starttime;
+        //uint256 deadline = _deadline;
     }
 }    
