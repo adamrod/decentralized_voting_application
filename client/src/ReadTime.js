@@ -24,8 +24,8 @@ class ReadTime extends React.Component {
     var deadlineDate = null;
     if (startTime && deadline)
     {
-      var startTimeDate = new Date(startTime.value * 1000);
-      var deadlineDate = new Date(deadline.value * 1000);
+      startTimeDate = new Date(startTime.value * 1000);
+      deadlineDate = new Date(deadline.value * 1000);
     }
 
     return (
