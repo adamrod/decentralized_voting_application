@@ -20,10 +20,18 @@ class ReadTime extends React.Component {
     const startTime = Election.startTime[this.state.startTimeKey];
     const deadline = Election.deadline[this.state.deadlineKey];
 
+    var startTimeDate = null;
+    var deadlineDate = null;
+    if (startTime && deadline)
+    {
+      var startTimeDate = new Date(startTime.value * 1000);
+      var deadlineDate = new Date(deadline.value * 1000);
+    }
+
     return (
       <React.Fragment>
-        <p>StartTime: {startTime && startTime.value}</p>
-        <p>Deadline: {deadline && deadline.value}</p>
+        <p>Election starts: {deadlineDate && startTimeDate.toString()}</p>
+        <p>Election ends: {deadlineDate && deadlineDate.toString()}</p>
       </React.Fragment>
     );
   }
