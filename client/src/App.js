@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ReadTime from "./ReadTime";
 import ReadCandidates from "./ReadCandidates";
+import Vote from "./Vote";
 
 class App extends Component {
   state = { loading: true, drizzleState: null };
@@ -36,6 +37,10 @@ class App extends Component {
           drizzleState={this.state.drizzleState}
         />
         <ReadCandidates
+          drizzle={this.props.drizzle}
+          drizzleState={this.state.drizzleState}
+        />
+        <Vote
           drizzle={this.props.drizzle}
           drizzleState={this.state.drizzleState}
         />
