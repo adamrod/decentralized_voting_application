@@ -32,16 +32,19 @@ class ReadCandidates extends React.Component {
       <table align="center">
         <thead align="left">
           <tr>
-            <th>Candidate</th>
+            <th>ID</th>
+            <th>Candidate name</th>
             <th>Votes</th>
           </tr>
         </thead>
         <tbody align="left">
           <tr>
+            <td>{candidates[0] && candidates[0].value[0]}</td>
             <td>{candidates[0] && candidates[0].value[1]}</td>
             <td>{candidates[0] && candidates[0].value[2]}</td>
           </tr>
           <tr>
+            <td>{candidates[1] && candidates[1].value[0]}</td>
             <td>{candidates[1] && candidates[1].value[1]}</td>
             <td>{candidates[1] && candidates[1].value[2]}</td>
           </tr>
