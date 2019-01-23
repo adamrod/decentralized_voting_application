@@ -1,7 +1,7 @@
 import React from "react";
 
-class ReadDeadline extends React.Component {
-  state = { dataKey1: null, dataKey2: null };
+class ReadTime extends React.Component {
+  state = { startTimeKey: null, deadlineKey: null };
 
   componentDidMount() {
     const { drizzle } = this.props;
@@ -9,11 +9,11 @@ class ReadDeadline extends React.Component {
     const contract = drizzle.contracts.Election;
 
     // let drizzle know we want to watch the `candidate` method
-    const dataKey1 = contract.methods["startTime"].cacheCall();
-    const dataKey2 = contract.methods["deadline"].cacheCall();
+    const startTimeKey = contract.methods["startTime"].cacheCall();
+    const deadlineKey = contract.methods["deadline"].cacheCall();
 
     // save the `dataKey` to local component state for later reference
-    this.setState({ dataKey1, dataKey2 });
+    this.setState({ startTimeKey, deadlineKey });
   }
 
   render() {
@@ -21,8 +21,8 @@ class ReadDeadline extends React.Component {
     const { Election } = this.props.drizzleState.contracts;
 
     // using the saved `dataKey`, get the variable we're interested in
-    const startTime = Election.startTime[this.state.dataKey1];
-    const deadline = Election.deadline[this.state.dataKey2];
+    const startTime = Election.startTime[this.state.startTimeKey];
+    const deadline = Election.deadline[this.state.deadlineKey];
 
     return (
       <React.Fragment>
@@ -33,4 +33,4 @@ class ReadDeadline extends React.Component {
   }
 }
 
-export default ReadDeadline;
+export default ReadTime;

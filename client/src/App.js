@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import ReadDeadline from "./ReadDeadline";
+import ReadTime from "./ReadTime";
+import ReadCandidates from "./ReadCandidates";
 
 class App extends Component {
   state = { loading: true, drizzleState: null };
@@ -30,7 +31,11 @@ class App extends Component {
     if (this.state.loading) return "Loading Drizzle...";
     return (
       <div className="App">
-        <ReadDeadline
+        <ReadTime
+          drizzle={this.props.drizzle}
+          drizzleState={this.state.drizzleState}
+        />
+        <ReadCandidates
           drizzle={this.props.drizzle}
           drizzleState={this.state.drizzleState}
         />
