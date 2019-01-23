@@ -3,17 +3,12 @@ import React from "react";
 class Vote extends React.Component {
   state = { stackId: null };
 
-  handleKeyDown = e => {
-    if (e.keyCode === 13) {
-      this.vote(e.target.value);
-    }
-  };
-
-  vote = value => {
+  vote = () => {
+    console.log(document.getElementById("ID_input").value);
     const { drizzle, drizzleState } = this.props;
     const contract = drizzle.contracts.Election;
 
-    const stackId = contract.methods["vote"].cacheSend(value, {
+    const stackId = contract.methods["vote"].cacheSend(document.getElementById("ID_input").value, {
       from: drizzleState.accounts[0]
     });
 
@@ -31,10 +26,12 @@ class Vote extends React.Component {
 
   render() {
     return (
-      <div>
-        <input type="text" onKeyDown={this.handleKeyDown} />
-        <div>{this.getTxStatus()}</div>
-      </div>
+      <React.Fragment>
+        <div>
+          ID: <input type="number" min="0" id="ID_input" /> <button type="button" onClick={this.vote}>Vote</button>
+          <div>{this.getTxStatus()}</div>
+        </div>
+      </React.Fragment>
     );
   }
 }
