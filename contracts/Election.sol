@@ -8,7 +8,7 @@ contract Election {
         uint voteCount;
     }
     Candidate[] public candidates;
-    uint16 public candidatesCount;
+    uint256 public candidatesCount;
     
     mapping(address => bool) public voters;
 
