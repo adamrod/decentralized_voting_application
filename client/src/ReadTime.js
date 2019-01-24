@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 class ReadTime extends React.Component {
   state = { startTimeKey: null, deadlineKey: null };
@@ -24,8 +25,8 @@ class ReadTime extends React.Component {
     var deadlineDate = null;
     if (startTime && deadline)
     {
-      startTimeDate = new Date(startTime.value * 1000);
-      deadlineDate = new Date(deadline.value * 1000);
+      startTimeDate = new moment(startTime.value * 1000).format('YYYY-MM-DD HH:mm:ss');
+      deadlineDate = new moment(deadline.value * 1000).format('YYYY-MM-DD HH:mm:ss');
     }
 
     return (
